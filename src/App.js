@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import Navbar from "./components/navbar";
 import { API_KEY } from "./constants/APIKey";
 import React, { useEffect, useState } from "react";
 
@@ -15,17 +16,13 @@ function App() {
   console.log(apod);
   return (
     <div className="App">
+      <Navbar />
       {apod ? (
         <>
           <p>{apod.copyright}</p>
           <p>{apod.date}</p>
           <h3>{apod.title}</h3>
-          <img
-            src={apod.hdurl}
-            alt="Girl in a jacket"
-            width="500"
-            height="600"
-          ></img>
+          <img src={apod.hdurl} height="700"></img>
           <p>{apod.explanation}</p>
         </>
       ) : null}
