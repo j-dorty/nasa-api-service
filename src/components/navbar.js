@@ -1,26 +1,23 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
+import { options } from "../constants/Options";
 
-export default function Navbar() {
-  // showSettings (e) {
-  //   e.preventDefault();
+export default function Navbar(props) {
+  const showSettings = (e) => {
+    e.preventDefault();
+  };
 
-  // }
+  console.log(options);
 
   return (
-    <Menu>
-      <a id="home" className="menu-item" href="/">
-        Home
-      </a>
-      <a id="about" className="menu-item" href="/about">
-        About
-      </a>
-      <a id="contact" className="menu-item" href="/contact">
-        Contact
-      </a>
-      <a onClick={this.showSettings} className="menu-item--small" href="">
-        Settings
-      </a>
+    <Menu {...props}>
+      {options.map((v, i) => {
+        return (
+          <a href={v.href} key={i}>
+            {v.LinkName}
+          </a>
+        );
+      })}
     </Menu>
   );
 }

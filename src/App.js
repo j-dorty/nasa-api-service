@@ -4,7 +4,7 @@ import Navbar from "./components/navbar";
 import { API_KEY } from "./constants/APIKey";
 import React, { useEffect, useState } from "react";
 
-function App() {
+export default function App() {
   const [apod, setApod] = useState();
 
   useEffect(() => {
@@ -15,19 +15,17 @@ function App() {
 
   console.log(apod);
   return (
-    <div className="App">
-      <Navbar />
+    <div id="App" className="App">
+      <Navbar pageWrapId={"page-wrap"} outerContainerId={"App"} />
       {apod ? (
-        <>
+        <div id="page-wrap">
           <p>{apod.copyright}</p>
           <p>{apod.date}</p>
           <h3>{apod.title}</h3>
           <img src={apod.hdurl} height="700"></img>
           <p>{apod.explanation}</p>
-        </>
+        </div>
       ) : null}
     </div>
   );
 }
-
-export default App;
