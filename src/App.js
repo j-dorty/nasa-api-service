@@ -1,31 +1,29 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+
+import Apod from "./pages/apod";
 import Navbar from "./components/navbar";
-import { API_KEY } from "./constants/APIKey";
-import React, { useEffect, useState } from "react";
+import Home from "./pages/home";
+import Neows from "./pages/neows";
 
 export default function App() {
-  const [apod, setApod] = useState();
-
-  useEffect(() => {
-    fetch(`https://api.nasa.gov/planetary/apod?${API_KEY}`)
-      .then((response) => response.json())
-      .then((data) => setApod(data));
-  }, []);
-
-  console.log(apod);
   return (
-    <div id="App" className="App">
-      <Navbar pageWrapId={"page-wrap"} outerContainerId={"App"} />
-      {apod ? (
-        <div id="page-wrap">
-          <p>{apod.copyright}</p>
-          <p>{apod.date}</p>
-          <h3>{apod.title}</h3>
-          <img src={apod.hdurl} height="700"></img>
-          <p>{apod.explanation}</p>
-        </div>
-      ) : null}
-    </div>
+    <>
+      <Router>
+        <Navbar pageWrapId={"page-wrap"} outerContainerId={"App"} />
+        <Switch>
+          <Route path="/apod">
+            <Apod />
+          </Route>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/neows">
+            <Neows />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }

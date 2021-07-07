@@ -31,20 +31,14 @@ body {
   position: relative;
 }
 
-.bm-item {
-  display: inline-block;
-
-  /* Our sidebar item styling */
-  text-decoration: none;
-  margin-bottom: 10px;
-  color: #d1d1d1;
-  transition: color 0.2s;
-}
-
-.bm-item:hover {
+.burgerMenulink {
   color: white;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 15px;
 }
 
+/* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
   width: 36px;
@@ -58,6 +52,11 @@ body {
   background: #373a47;
 }
 
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #ac9a9a;
+}
+
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
   height: 24px;
@@ -69,9 +68,18 @@ body {
   background: #bdc3c7;
 }
 
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
 /* General sidebar styles */
 .bm-menu {
-  background: #000;
+  background: #373a47;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
@@ -84,6 +92,12 @@ body {
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
 }
 
 /* Styling of overlay */
